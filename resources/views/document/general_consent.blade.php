@@ -354,7 +354,7 @@ td {
         <tr>
           <td colspan="4" style="vertical-align: top; margin:0px; border:none;">
             <h5 style="margin: 0px">IV. INFORMASI BIAYA PELAYANAN PUSKESMAS</h5>
-            <ol type="a">
+            <ol type="1">
               <li>Saya telah memahami informasi biaya pengobatan dan biaya tindakan yang telah disampaikan dari pihak Puskesmas Genteng Kulon, dan saya bersedia untuk biaya tersebut sesuai peraturan yang berlaku.</li>
             </ol>
           </td>
@@ -369,8 +369,8 @@ td {
               <img style="width:200px; height:70px;" src="data:image/png;base64, {{ $data['signaturePetugas']}}" alt="" srcset="">
             </div>
            
-            <p style="margin-top: 10px; margin-bottom:0px; text-decoration:underline;">{{ $consent['petugas_nama']}}</p>
-            <p style="margin-top:0px;">{{ $consent['petugas_nip'] }}</p>
+            <p style="margin-top: 10px; margin-bottom:0px; text-decoration:underline; font-weight:bold; text-transform: capitalize;">{{ $consent['petugas_nama']}}</p>
+            <p style="margin-top:0px; font-weight:bold;">{{ $consent['petugas_nip'] }}</p>
           </td>
           <td colspan="2" style="text-align: center; border:none;">
             <p style="font-display:font-bold">Banyuwangi, {{ $consent['date'] }}</p>
@@ -383,7 +383,7 @@ td {
             <div style="margin-top:0px;">
               <img style="width:200px; height:70px;" src="data:image/png;base64, {{ $data['signaturePasien']}}" alt="" srcset="">
             </div>
-            <p style="margin-top: 0px; text-decoration:underline;">{{ $consent['nama']}}</p>
+            <p style="margin-top: 0px; text-decoration:underline; font-weight:bold; text-transform: capitalize;">{{ $consent['nama']}}</p>
           </td>
         </tr>
       </table>

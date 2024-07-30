@@ -8,18 +8,19 @@
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <style>
         /* Ensure the form and status dropdown are hidden initially */
         .collapse { display: none; }
     </style>
 </head>
-<body class="bg-blue-900 flex justify-center p-4">
+<body class="bg-gradient-to-r from-green-800 to-green-500 flex justify-center p-4">
 
     <div class="bg-white rounded-lg shadow-lg py-5 px-6 mx-10 relative h-full">
-        <h2 class="text-center text-2xl font-bold mb-1">DATA PASIEN </h2>
+        <h2 class="text-center text-2xl text-green-900 font-bold mb-1">DATA PASIEN </h2>
         
-        <h4 class="text-center text-1xl font-bold mb-6  ">{{ $data->puskesmas->nama }}</h4>
+        <h4 class="text-center text-1xl text-green-900 font-bold mb-6  ">{{ $data->puskesmas->nama }}</h4>
         <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
             <div class="font-medium">Nama Lengkap</div>
             <div>: {{ $data->nama }}</div>
@@ -33,10 +34,10 @@
        
         <div class="flex justify-between ">
             
-            <button id="toggleGuardianForm" type="button" class="bg-gray-500 text-white px-4 py-2 rounded shadow hover:bg-gray-600 transition">Wali Pasien</button>
+            <button id="toggleGuardianForm" type="button" class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600 transition">Wali Pasien</button>
         </div>
         <div class="flex justify-end  absolute bottom-0 right-0 m-5 ">
-            <button id="openModalButton" type="button" class="bg-blue-500 hover:bg-blue-600  text-white font-bold py-2 px-4 rounded">Konfirmasi</button>
+            <button id="openModalButton" type="button" class="bg-green-700 hover:bg-green-900  text-white font-bold py-2 px-4 rounded">Konfirmasi</button>
         </div>
 
         
@@ -92,7 +93,7 @@
     <!-- Modal -->
     <div id="modal" class="fixed inset-0 flex items-center justify-center z-30 hidden">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50 z-30 "></div>
-        <div class="modal-container bg-white w-full h-full md:max-w-md mx-auto rounded shadow-lg z-40 ">
+        <div class="modal-container bg-white w-xl mx-auto rounded shadow-lg z-40 ">
             <!-- Modal content -->
             <div class="modal-content py-4 text-left px-6">
                 <!-- Title -->
@@ -110,8 +111,8 @@
                 <!-- Body -->
                 <div class="bg-white rounded-lg shadow-lg  w-full h-full">
                     <div class="flex justify-center w-full">
-                        <i class="fa-regular fa-user m-4 mt-5 text-blue-500 " style="font-size: 25px;"></i>
-                        <h6 class="text-center text-2xl font-bold text-blue-600 m-4">Konfirmasi TTD Pasiens</h6>
+                        <i class="fa-regular fa-user m-4 mt-5 text-green-900 " style="font-size: 25px;"></i>
+                        <h6 class="text-center text-2xl font-bold text-green-900 m-4">Konfirmasi TTD Pasiens</h6>
                         
                     </div>
                         <div class="mb-4" id="signature-pad">
@@ -128,7 +129,7 @@
                         </div>
                          @endif
                         <div class="flex justify-center">
-                            <button id="registerButton" type="submit" class="w-full bg-blue-700 text-white px-4 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md hover:bg-blue-800" >Setuju</button>
+                            <button id="registerButton" type="submit" class="w-full bg-green-700 text-white px-4 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md hover:bg-green-900" >Setuju</button>
                         </div>
                 <!-- Buttons -->
               

@@ -97,7 +97,7 @@ class GeneralConsentController extends Controller
          
          return redirect()->route('petugas');
       }catch (ValidationException $e) {
-         return back()->with(['error' => $e->getMessage()]); // Unprocessable Entity
+         return back()->with(['error' => 'mohon isi username dan password']); // Unprocessable Entity
       } catch (\Exception $e) {
          return back()->with(['erorr' => 'Sistem sedang sibuk']);
      }
