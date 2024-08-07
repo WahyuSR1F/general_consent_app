@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gradient-to-r from-green-800 to-green-500 flex items-center justify-center min-h-screen">
    
-        <div class="bg-white p-14 rounded-lg shadow-lg w-full mx-40">
+        <div class="bg-white p-14 rounded-lg shadow-lg w-full lg:mx-40 md:mx-20 sm:mx-10">
             <form action="{{ route('search-process') }}" method="post">
                 @csrf
                 <h2 class="text-center text-xl font-semibold mb-6 text-green-900">Masukkan No. RM Pasien</h2>

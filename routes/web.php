@@ -6,16 +6,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',function(){
-    redirect()->route('login-view');
+    return view('welcome');
 });
 
-Route::get('/login',[GeneralConsentController::class, 'generalConsent'])->name('login-view');
+Route::get('/login',[GeneralConsentController::class, 'generalConsent'])->name('login-view')->middleware(['AccessLogin']);
 
 
 Route::post('/login-process',[GeneralConsentController::class, 'loginProcess'])->name('login_process');
 
 
-Route::middleware(AuthPkmAccess::class)->group(function(){
+Route::middleware(['PkmAuthAccess'])->group(function(){
     
     Route::get('/petugas',[GeneralConsentController::class, 'dataPetugas'])->name('petugas');
     Route::post('/petugas-prosess',[GeneralConsentController::class,'getPetugas'])->name('petugas-prosess');

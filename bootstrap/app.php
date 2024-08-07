@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AccessLoging;
 use App\Http\Middleware\AuthPkmAccess;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -12,7 +13,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(AuthPkmAccess::class);
+
+        $middleware->alias([
+            'PkmAuthAccess' => AuthPkmAccess::class,
+            'AccessLogin' =>  AccessLoging::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

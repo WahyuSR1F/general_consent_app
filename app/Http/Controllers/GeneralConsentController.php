@@ -208,7 +208,7 @@ class GeneralConsentController extends Controller
 
    public function makeGeneralConsent (Request $request){
       try{
-         
+
          //inilialisasi variabel pasiens
          $data =[];
          
@@ -218,10 +218,6 @@ class GeneralConsentController extends Controller
          if($request->input('check') == "false"){
             $request->validate([
                'nama' => [new MustNullChecker],
-               'tempat' => [new MustNullChecker],
-               'ttl' => [new MustNullChecker],
-               'alamat' => [new MustNullChecker],
-               'telepon' => [new MustNullChecker],
                'status' => [new MustNullChecker],
                'signature' => 'required|string|starts_with:data:image/png;base64,'
             ]);
@@ -229,10 +225,6 @@ class GeneralConsentController extends Controller
             $request->validate([
                'signature' => 'required|string|starts_with:data:image/png;base64,',
                'nama' =>  'required|string',
-               'tempat' => 'required|string',
-               'ttl' => 'required|string',
-               'alamat' => 'required|string',
-               'telepon' => 'required|string',
                'status' => 'required|string'
             ]);
          }
@@ -278,22 +270,23 @@ class GeneralConsentController extends Controller
             WaliPasiens::create([
                'uuid' => $uuidWali,
                'nama' =>  $request->nama,
-               'tempat_lahir' => $request->tempat,
-               'tanggal_lahir' => $request->ttl,
-               'alamat' => $request->alamat,
-               'telephone' => $request->telepon,
+               'tempat_lahir' => null,
+               'tanggal_lahir' => null,
+               'alamat' => null,
+               'telephone' => null,
                'status' => $request->status,
             ]);
 
 
             //data for file generate
             $data = [
-               "nama" =>  $request->nama,
-               "tempat" => $request->tempat,
-               "ttl" => $request->ttl,
-               "alamat" => $request->alamat,
-               "telepon" => $request->telepon,
+               "nama" =>  $pasien->nama,
+               "tempat" => $pasien->tempat_lahir,
+               "ttl" => $pasien->tanggal_lahir,
+               "alamat" => $pasien->alamat,
+               "telepon" => $pasien->telephone,
                "status" =>  $request->status,
+               "nama_signature" => $request->nama,  
                "signature_petugas" => $petugas['petugas']->signature,
                "signature_pasiens" =>  $path,
                "wali" => true,
@@ -344,6 +337,7 @@ class GeneralConsentController extends Controller
                "alamat" => $pasien->alamat,
                "telepon" => $pasien->telephone,
                "status" =>  'Diri Saya Sendiri',
+               "nama_signature" => $pasien->nama, 
                "signature_petugas" => $petugas['petugas']->signature,
                "signature_pasiens" =>  $path,
                "wali" => false,

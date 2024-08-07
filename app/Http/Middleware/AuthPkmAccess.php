@@ -20,7 +20,9 @@ class AuthPkmAccess
      */
     public function handle(Request $request, Closure $next)
     {
-    
+        if(!Auth::guard('web')->check()){
+            return redirect()->route('login-view');
+        }
         return $next($request);
       
         

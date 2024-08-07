@@ -8,6 +8,7 @@
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <style>
@@ -17,7 +18,7 @@
 </head>
 <body class="bg-gradient-to-r from-green-800 to-green-500 flex justify-center p-4">
 
-    <div class="bg-white rounded-lg shadow-lg py-5 px-6 mx-10 relative h-full">
+    <div class="bg-white rounded-lg shadow-lg py-5 px-6 lg:mx-10 md:mx-5 sm:mx-1 relative h-full">
         <h2 class="text-center text-2xl text-green-900 font-bold mb-1">DATA PASIEN </h2>
         
         <h4 class="text-center text-1xl text-green-900 font-bold mb-6  ">{{ $data->puskesmas->nama }}</h4>
@@ -32,68 +33,19 @@
             <div>: {{ $data->telephone }}</div>
         </div>
        
-        <div class="flex justify-between ">
-            
-            <button id="toggleGuardianForm" type="button" class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600 transition">Wali Pasien</button>
-        </div>
-        <div class="flex justify-end  absolute bottom-0 right-0 m-5 ">
-            <button id="openModalButton" type="button" class="bg-green-700 hover:bg-green-900  text-white font-bold py-2 px-4 rounded">Konfirmasi</button>
+       
+        <div class="flex justify-center mx-10 ">
+            <button id="openModalButtonWali" type="button" class="bg-yellow-500 text-white px-4 py-2 rounded w-full mx-5 shadow h-10 hover:bg-yellow-600 transition font-bold">WALI PASIEN</button>
+            <button id="openModalButtonPasien" type="button" class="bg-green-700 hover:bg-green-900 w-full mx-5 h-10 text-white font-bold py-2 px-4 rounded">PASIEN</button>
         </div>
 
-        
-        <!-- Guardian Form (Initially Hidden) -->
-        <div id="guardianForm" class="collapse mt-8 bg-gray-100 p-6 rounded-lg shadow-lg">
-       <form action="{{ route('cetak-general-consent') }}" method="post">
-            <h3 class="text-lg font-bold mb-4">Formulir Wali Pasien</h3>
-                @csrf
-                <input type="hidden" id="checking" name="check">
-                <div class="mb-4">
-                    <label class="block text-sm font-medium mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
-                    <input type="text" id="nama_wali" name="nama" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200" placeholder="Nama Lengkap">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium mb-2">Tempat <span class="text-red-500">*</span></label>
-                    <input type="text" id="tempat_wali" name="tempat" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200" placeholder="Tempat/Tanggal Lahir">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium mb-2">Tanggal Lahir <span class="text-red-500">*</span></label>
-                    <input type="date" id="ttl_wali" name="ttl" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200" placeholder="Tempat/Tanggal Lahir">
-                </div>
-
-                <div class="mb-4">
-                    <label class="block text-sm font-medium mb-2">Alamat <span class="text-red-500">*</span></label>
-                    <input type="text" id="alamat_wali" name="alamat" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200" placeholder="Alamat">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium mb-2">Telepon <span class="text-red-500">*</span></label>
-                    <input type="text" id="telepon_wali" name="telepon" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200" placeholder="Telepon">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium mb-2">Status Wali <span class="text-red-500">*</span></label>
-                    <input type="hidden" name="status" id="statusValue">
-                    <div class="relative">
-                        <button type="button" id="statusDropdownButton" class="bg-gray-500 text-white px-4 py-2 rounded shadow hover:bg-gray-600 transition">Pilih Status</button>
-                        <div id="statusDropdown" class="absolute left-0 mt-2 bg-white border border-gray-300 rounded shadow-lg w-full hidden z-10">
-                            <ul class="list-none p-2">
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-status="Suami">Suami</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-status="Istri">Istri</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-status="Anak">Anak</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-status="Saudara">Saudara</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-status="Lainnya">Lainnya</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <p class="m-0 text-red-500">* harus diisi oleh pengguna</p>
-        </div>
-    </div>
-   
+    
 
 
     <!-- Modal -->
     <div id="modal" class="fixed inset-0 flex items-center justify-center z-30 hidden">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50 z-30 "></div>
-        <div class="modal-container bg-white w-xl mx-auto rounded shadow-lg z-40 ">
+        <div class="modal-container bg-white w-xl mx-auto my-5 rounded z-40 ">
             <!-- Modal content -->
             <div class="modal-content py-4 text-left px-6">
                 <!-- Title -->
@@ -109,68 +61,105 @@
                     </button>
                 </div>
                 <!-- Body -->
-                <div class="bg-white rounded-lg shadow-lg  w-full h-full">
+                <div class="bg-white rounded-lg w-full h-full">
                     <div class="flex justify-center w-full">
                         <i class="fa-regular fa-user m-4 mt-5 text-green-900 " style="font-size: 25px;"></i>
-                        <h6 class="text-center text-2xl font-bold text-green-900 m-4">Konfirmasi TTD Pasiens</h6>
+                        <h6 id="title" class="text-center text-2xl font-bold text-green-900 m-4">Konfirmasi TTD Pasiens</h6>
                         
                     </div>
                         <div class="mb-4" id="signature-pad">
                             <div class="relative z-50">
                                 <label  class="block text-gray-700 text-center mb-2 relative ">Masukkan tanda tangan</label>
                                 <canvas id="signaturePad" class="w-full h-48 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md absolut " style="pointer-events: auto;"></canvas>
-                                <button type="button" id="clear" class="mt-4 bg-red-500 text-white w-full py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-300 shadow-md hover:bg-red-600" id="Clear">Clear</button>
+                                <button type="button" id="clear" class="absolute top-0 left-0 m-2 p-1 bg-white p-1 px-2 rounded-full shadow-md mt-9 hover:bg-red-500">
+                                    <i class="fa-solid fa-rotate-right text-gray-500  hover:text-white"></i>
+                                </button>
+                                {{-- <button type="button" id="clear" class="mt-4 bg-red-500 text-white w-full py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-300 shadow-md hover:bg-red-600" id="Clear">Ulangi</button> --}}
                             </div>
                         </div>
-                        <input type="hidden" name="signature" id="signature">
-                        @if (session('error'))
-                        <div class="text-center p-2 text-red-500">
-                            {{ session('error') }}
-                        </div>
-                         @endif
-                        <div class="flex justify-center">
-                            <button id="registerButton" type="submit" class="w-full bg-green-700 text-white px-4 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md hover:bg-green-900" >Setuju</button>
-                        </div>
-                <!-- Buttons -->
+                        <form id="mainForm" action="{{ route('cetak-general-consent') }}" method="post">
+                            <div id="waliForm" class="w-auto">
+                                @csrf
+                                <input type="hidden" id="checking" name="check">
+                                
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                                    <input type="text" id="namaWali" name="nama" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200" placeholder="Nama Lengkap">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium mb-2">Status Wali <span class="text-red-500">*</span></label>
+                                        <div class="mb-4 w-full">
+                                            <select id="options" name="options" class="w-full px-3 py-2 border rounded">
+                                                <option value="" disabled selected>Pilih opsi</option>
+                                                <option value="Suami">Suami</option>
+                                                <option value="Istri">Istri</option>
+                                                <option value="Anak">Anak</option>
+                                                <option value="Saudara">Saudara</option>
+                                                <option value="Keluarga">Keluarga</option>
+                                                <option value="other">Lainnya</option>
+                                               
+                                                
+                                            </select>
+                                            <div id="ortherSelect" class="hidden m-0 w-full">
+                                                <input type="text" id="otherOptionsInput" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200" name="" id="" placeholder="Hubungan Pasien">
+                                            </div>
+                                        </div>
+                                </div>
+                                <p class="m-0 text-red-500">* wajib mengisi</p>
+                            </div>  
+                            <input type="hidden" name="signature" id="signature">
+                            @if (session('error'))
+                            <div class="text-center p-2 text-red-500">
+                                {{ session('error') }}
+                            </div>
+                            @endif
+                            <div class="flex justify-center">
+                                <button id="registerButton" type="submit" class="w-full bg-green-700 text-white px-4 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md hover:bg-green-900" >Setuju</button>
+                            </div>
+                            <input type="hidden" id="statusHubungan" name="status">
               
+                        </form>
             </div>
         </div>
     </div>
 
-    </form>
+
 
     <script>
          document.addEventListener("DOMContentLoaded", function() {
             // Set default value to "false"
-            var checkingElement = document.getElementById("checking");
-            checkingElement.value = "false";
+            const checkingElement = document.getElementById("checking");
+            const namaWali = document.getElementById("namaWali");
+            const optionsWali =  document.getElementById('options');
+            const statusHubungan = document.getElementById('statusHubungan');
+
+          
 
             // Add event listener to the button
-            document.getElementById('toggleGuardianForm').addEventListener('click', function() {
-                var checkingElement = document.getElementById("checking");
-                // Toggle value between "true" and "false"
-                checkingElement.value = (checkingElement.value === "false") ? "true" : "false";
-                console.log(checkingElement.value);
-                if(checkingElement.value == "true"){
-                    document.getElementById('nama_wali').required = true;
-                    document.getElementById('tempat_wali').required = true;
-                    document.getElementById('ttl_wali').required = true;
-                    document.getElementById('alamat_wali').required = true;
-                    document.getElementById('telepon_wali').required = true;
-                }
-                if(checkingElement.value == "false"){
-                    document.getElementById('nama_wali').required = false;
-                    document.getElementById('tempat_wali').required = false;
-                    document.getElementById('ttl_wali').required = false;
-                    document.getElementById('alamat_wali').required = false;
-                    document.getElementById('telepon_wali').required = false;
-                }
+            document.getElementById('openModalButtonWali').addEventListener('click', function() {
+               document.getElementById('waliForm').classList.remove('hidden');
+               checkingElement.value = "true";
+               document.getElementById('title').textContent = 'Konfirmasi TTD Wali Pasien';
+               namaWali.required=true;
+               optionsWali.required=true;
+               
+            });
+
+            document.getElementById('openModalButtonPasien').addEventListener('click', function(){
+                document.getElementById('waliForm').classList.add('hidden');
+                checkingElement.value = 'false';
+                document.getElementById('title').textContent = 'Konfirmasi TTD Pasien';
+                namaWali.required=false;
+                optionsWali.required=false;
+                namaWali.value=null;
+                optionsWali.value=null;
+                statusHubungan.value=null;
             });
         }); 
 
         document.addEventListener("DOMContentLoaded", function() {
-            var canvas = document.getElementById('signaturePad');
-            var signaturePad;
+            const canvas = document.getElementById('signaturePad');
+            let signaturePad;
 
             function initializeSignaturePad() {
                 if (signaturePad) {
@@ -179,11 +168,11 @@
                 }
                 signaturePad = new SignaturePad(canvas);
             }
-            var savePNGButton = document.getElementById('registerButton');
+            const savePNGButton = document.getElementById('registerButton');
 
             // Resize the canvas to fill its parent element
             function resizeCanvas() {
-                var ratio = Math.max(window.devicePixelRatio || 1, 1);
+                let ratio = Math.max(window.devicePixelRatio || 1, 1);
                 canvas.width = canvas.offsetWidth * ratio;
                 canvas.height = canvas.offsetHeight * ratio;
                 canvas.getContext("2d").scale(ratio, ratio);
@@ -225,38 +214,58 @@
             window.addEventListener('resize', resizeCanvas);
 
 // You may need to add code to open the modal, e.g., on button click:
-            document.getElementById('openModalButton').addEventListener('click', openModal)
+         document.getElementById('openModalButtonWali').addEventListener('click', openModal)
+         document.getElementById('openModalButtonPasien').addEventListener('click', openModal)
 
            
         });
 
-        // Toggle Guardian Form
-        document.getElementById('toggleGuardianForm').addEventListener('click', function() {
-            var guardianForm = document.getElementById('guardianForm');
-            guardianForm.classList.toggle('collapse');
+    document.addEventListener("DOMContentLoaded", function() {
+        const options = document.getElementById('options');
+        const otherOptionContainer = document.getElementById('ortherSelect');
+        const otherOptionsInput = document.getElementById('otherOptionsInput');
+        const statusHubungan = document.getElementById('statusHubungan');
+
+        options.addEventListener('change', function() {
+            if (options.value === 'other') {
+                otherOptionContainer.classList.remove('hidden');
+                statusHubungan.value = '';
+            } else {
+                document.getElementById('statusHubungan').value = options.value;
+                otherOptionContainer.classList.add('hidden');
+            }
+            
         });
 
-        // Toggle Status Dropdown
-        document.getElementById('statusDropdownButton').addEventListener('click', function() {
-            var statusDropdown = document.getElementById('statusDropdown');
-            statusDropdown.classList.toggle('hidden');
+        otherOptionsInput.addEventListener('input', function() {
+            statusHubungan.value = otherOptionsInput.value;
         });
+    })
 
-        // Handle Status Selection
-        document.querySelectorAll('#statusDropdown a').forEach(function(item) {
-            item.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
-                var selectedStatus = this.getAttribute('data-status');
-                document.getElementById('statusDropdownButton').textContent = selectedStatus;
-                document.getElementById('statusValue').value = selectedStatus;
-                document.getElementById('statusDropdown').classList.add('hidden');
-            });
-        });
         
-        var modal = document.getElementById('modal');
-        var overlay = document.querySelector('.modal-overlay');
-        var openModalButton = document.getElementById('openModalButton');
-        var closeModalButton = document.getElementById('closeModalButton');
+
+        // // Toggle Status Dropdown
+        // document.getElementById('statusDropdownButton').addEventListener('click', function() {
+        //     var statusDropdown = document.getElementById('statusDropdown');
+        //     statusDropdown.classList.toggle('hidden');
+        // });
+
+        // // Handle Status Selection
+        // document.querySelectorAll('#statusDropdown a').forEach(function(item) {
+        //     item.addEventListener('click', function(event) {
+        //         event.preventDefault(); // Prevent default link behavior
+        //         var selectedStatus = this.getAttribute('data-status');
+        //         document.getElementById('statusDropdownButton').textContent = selectedStatus;
+        //         document.getElementById('statusValue').value = selectedStatus;
+        //         document.getElementById('statusDropdown').classList.add('hidden');
+        //     });
+        // });
+        
+        const modal = document.getElementById('modal');
+        const overlay = document.querySelector('.modal-overlay');
+        const openModalButtonWali = document.getElementById('openModalButtonWali');
+        const openModalButtonPasien = document.getElementById('openModalButtonPasien')
+        const closeModalButton = document.getElementById('closeModalButton');
 
         // Function to open modal
         function openModal() {
@@ -269,7 +278,8 @@
         }
 
         // Event listeners
-        openModalButton.addEventListener('click', openModal);
+        openModalButtonWali.addEventListener('click', openModal);
+        openModalButtonPasien.addEventListener('click', openModal);
         closeModalButton.addEventListener('click', closeModal);
         overlay.addEventListener('click', closeModal); // Close modal if clicked outside of it
      

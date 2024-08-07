@@ -8,11 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 </head>
-<body class="bg-blue-900 flex items-center justify-center ml-5 mr-5 ">
-    <div class="bg-white rounded-lg shadow-lg p-8 w-full">
-        <div class="flex justify-center w-full">
-            <i class="fa-regular fa-user m-4 mt-5 text-blue-500 " style="font-size: 25px;"></i>
-            <h6 class="text-center text-2xl font-bold text-blue-600 m-4">Register Petugas</h6>
+<body class="bg-gradient-to-r from-green-800 to-green-500 flex items-center justify-center ml-5 mr-5 ">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-full m-6">
+        <div class="flex justify-center w-full ">
+            <i class="fa-regular fa-user m-4 mt-5 text-green-500 " style="font-size: 25px;"></i>
+            <h6 class="text-center text-2xl font-bold text-green-600 m-4">Register Petugas</h6>
             
         </div>
         <form action="{{ route('regis-petugas-process') }}" method="post">
@@ -41,7 +41,7 @@
             </div>
              @endif
             <div class="flex justify-center">
-                <button id="registerButton" type="submit" class="w-full bg-blue-700 text-white px-4 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md hover:bg-blue-800" >Konfirmasi</button>
+                <button id="registerButton" type="submit" class="w-full bg-green-700 text-white px-4 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md hover:bg-green-800" >Konfirmasi</button>
             </div>
         </form>
     </div>

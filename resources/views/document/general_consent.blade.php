@@ -227,7 +227,7 @@ td {
               </div>
             </header>
           </td>
-        
+         
           <td colspan="2" class="border p-relatif">
             <p  style="text-align: center;">RMJ Form. 01</p>
           </td>
@@ -277,6 +277,7 @@ td {
             </div>
           </td>
         </tr>
+       
         <tr>
           <td colspan="4" style="border:none;">
             <p class="p-relatif" style="font-weight:bold;margin:0px;">Mendapatkan informasi tentang :</p>
@@ -372,6 +373,7 @@ td {
             <p style="margin-top: 10px; margin-bottom:0px; text-decoration:underline; font-weight:bold; text-transform: capitalize;">{{ $consent['petugas_nama']}}</p>
             <p style="margin-top:0px; font-weight:bold;">{{ $consent['petugas_nip'] }}</p>
           </td>
+        
           <td colspan="2" style="text-align: center; border:none;">
             <p style="font-display:font-bold">Banyuwangi, {{ $consent['date'] }}</p>
             @if ($consent['wali'] == true)
@@ -379,16 +381,16 @@ td {
             @elseif ($consent['wali'] == false)
               <p style="font-display: bold">Pasien</p> 
             @endif
+          
             
             <div style="margin-top:0px;">
               <img style="width:200px; height:70px;" src="data:image/png;base64, {{ $data['signaturePasien']}}" alt="" srcset="">
             </div>
-            <p style="margin-top: 0px; text-decoration:underline; font-weight:bold; text-transform: capitalize;">{{ $consent['nama']}}</p>
+            <p style="margin-top: 0px; text-decoration:underline; font-weight:bold; text-transform: capitalize;">{{ $consent['nama_signature']}}</p>
           </td>
         </tr>
       </table>
     </div>
-    
   </div>
 </body>
 

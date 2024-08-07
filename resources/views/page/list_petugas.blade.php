@@ -15,7 +15,7 @@
 </head>
 <body class="bg-gradient-to-r from-green-800 to-green-500 flex items-center justify-center min-h-screen p-4">
     <div class="absolute top-4 left-4">
-        <h5 class="text-xl font-bold text-white">Selamat Datang, {{ $data->nama }}</h5>    
+        <h5 class="text-xl font-bold text-white">Selamat Datang, <br> {{ $data->nama }}</h5>    
     </div>
     <div class="absolute top-4 right-4">
         <a href="{{ route('logout') }}">
